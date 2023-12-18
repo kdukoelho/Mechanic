@@ -4,6 +4,7 @@
  */
 package org.example.view;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.example.controller.OrderRegisterController;
@@ -27,6 +28,7 @@ public class OrderRegister extends javax.swing.JFrame {
         setRadioButtonGroup();
         this.orc = new OrderRegisterController(dtm);
         this.mainView = mainView;
+        this.setLocationRelativeTo(null);
     }
 
     private OrderRegister() {
@@ -96,6 +98,8 @@ public class OrderRegister extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("MyMechanic");
+        setIconImage(new ImageIcon("/assets/engrenagem.png"););
         setMaximumSize(new java.awt.Dimension(1186, 733));
         setMinimumSize(new java.awt.Dimension(1186, 733));
 
@@ -464,9 +468,14 @@ public class OrderRegister extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos");
             }
             else{
+                // Limitando valor da gasolina entre 100 e 0;
+                int fuelLevel = Integer.parseInt(actualFuelLevelTxtField.getText());
+                if(fuelLevel > 100){ fuelLevel = 100; }
+                else if (fuelLevel < 0) { fuelLevel = 0; }
+                
                 ServiceOrder serviceOrder = orc.createServiceOrder(orc.createCostumer(clientNameTxtField.getText(), costumerContactTxtField.getText(), emailRBtn.isSelected()), 
                 orc.createMechanic(mechanicTxtField.getText()), 
-                orc.createVehicle(vehicleModelTxtField.getText(), brandTxtField.getText(), vehicleYearFmtdTxtField.getText(), modelYearFmtdTxtField.getText(), Float.parseFloat(kilometersDroveTxtField.getText()), Integer.parseInt(actualFuelLevelTxtField.getText()), isCarRBtn.isSelected()), 
+                orc.createVehicle(vehicleModelTxtField.getText(), brandTxtField.getText(), vehicleYearFmtdTxtField.getText(), modelYearFmtdTxtField.getText(), Float.parseFloat(kilometersDroveTxtField.getText()), fuelLevel, isCarRBtn.isSelected()), 
                 orc.getServicesFromTable(servicesTable), orc.getPartsFromTable(partsTable));
 
                 // Adiciona linha na tabela.

@@ -25,6 +25,7 @@ public class ServicePartRegister extends javax.swing.JFrame {
      */
     public ServicePartRegister(){
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     // Construtor para a GUI assumir a forma de cadastro de peças.
@@ -39,6 +40,7 @@ public class ServicePartRegister extends javax.swing.JFrame {
         
         partsPanel.setVisible(true);
         partsPanel.setEnabled(true);
+        this.setLocationRelativeTo(null);
     }
     
     // Construtor para a GUI assumir a forma de cadastro de serviços.
@@ -86,6 +88,7 @@ public class ServicePartRegister extends javax.swing.JFrame {
         cancelBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("MyMechanic");
         setMaximumSize(new java.awt.Dimension(583, 621));
         setMinimumSize(null);
 

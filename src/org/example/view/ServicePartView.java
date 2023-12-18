@@ -24,7 +24,7 @@ public class ServicePartView extends javax.swing.JFrame {
         initComponents();
         this.spvc = new ServicePartViewController(serviceOrder);
         addRows();
-
+        this.setLocationRelativeTo(null);
     }
 
     private ServicePartView() {
@@ -61,6 +61,7 @@ public class ServicePartView extends javax.swing.JFrame {
         okBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("MyMechanic");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));

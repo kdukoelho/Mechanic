@@ -26,6 +26,7 @@ public class MainView extends javax.swing.JFrame {
         initComponents();
         serviceOrdersList = new ArrayList<>();
         this.mvc = new MainViewController(serviceOrderTable, serviceOrdersList);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -48,7 +49,7 @@ public class MainView extends javax.swing.JFrame {
         filterCBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("OFICNA");
+        setTitle("MyMechanic");
 
         serviceOrdersPanel.setBackground(new java.awt.Color(0, 51, 102));
         serviceOrdersPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -119,7 +120,7 @@ public class MainView extends javax.swing.JFrame {
 
         filterCBox.setBackground(new java.awt.Color(255, 255, 255));
         filterCBox.setForeground(new java.awt.Color(0, 0, 0));
-        filterCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Identificador", "Nome do Cliente", "Veiculo" }));
+        filterCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Identificador", "Nome do Cliente", "Veiculo" }));
 
         javax.swing.GroupLayout serviceOrdersPanelLayout = new javax.swing.GroupLayout(serviceOrdersPanel);
         serviceOrdersPanel.setLayout(serviceOrdersPanelLayout);
