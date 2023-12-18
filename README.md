@@ -56,7 +56,7 @@ Por exemplo, o método que realiza o calculo do valor final da ordem de serviço
 
 - Filtrar ordem de serviço:
 
-	<ol>
+	<ol type="1">
 	<li>Selecionar na combo box, o tipo de filtragem (identificador, nome do cliente ou modelo do veículo);</li>
 	<li>Informar na text box, o valor requerido;</li>
 	<li>Clicar em "Achar"</li>
