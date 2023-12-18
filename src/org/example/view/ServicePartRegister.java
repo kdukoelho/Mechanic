@@ -322,6 +322,7 @@ public class ServicePartRegister extends javax.swing.JFrame {
                 if (service != null){
                 service = new Service(nameTxtField.getText(), Float.parseFloat(priceTxtField.getText()), Integer.parseInt(opTimeTxtField.getText()), descTxtField.getText());
                 sprc.addRow(service);
+                this.dispose();
                 } 
                 else if (part != null){
                 part = new Part(nameTxtField.getText(), Float.parseFloat(priceTxtField.getText()), brandTxtField.getText(), descTxtField.getText(), String.format("%s%s" ,measureTxtField.getText(), measureUnitTxtField.getSelectedItem().toString()));

@@ -58,7 +58,7 @@ public class MainViewController {
             int selectedIndex = table.getSelectedRow();
             if (selectedIndex != -1){
                 int objectId = Integer.parseInt(dtm.getValueAt(selectedIndex, 7).toString());
-                for (ServiceOrder serviceOrder : serviceOrdersList){
+                for (ServiceOrder serviceOrder : serviceOrdersList.toArray(new ServiceOrder[serviceOrdersList.size()])){
                     if(serviceOrder.getId() == objectId){
                         serviceOrdersList.remove(serviceOrder);
                     }
@@ -66,7 +66,7 @@ public class MainViewController {
                 dtm.removeRow(selectedIndex);
             }
         } catch (Exception ex){
-            System.out.println(ex.getMessage());
+            System.out.println(ex);
         }
     }
     
