@@ -229,7 +229,7 @@ public class ServicePartRegister extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(2, 2, 2)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(partsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(servicesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -286,14 +286,14 @@ public class ServicePartRegister extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -313,18 +313,25 @@ public class ServicePartRegister extends javax.swing.JFrame {
     
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
         try{
-            ServicePartRegisterController sprc = new ServicePartRegisterController(this.dtm);
-            if (service != null){
+            if(nameTxtField.getText().isBlank() || priceTxtField.getText().isBlank()){
+                JOptionPane.showMessageDialog(this, "Preencha os campos de nome e preço.");
+            }
+            else{
+                ServicePartRegisterController sprc = new ServicePartRegisterController(this.dtm);
+            
+                if (service != null){
                 service = new Service(nameTxtField.getText(), Float.parseFloat(priceTxtField.getText()), Integer.parseInt(opTimeTxtField.getText()), descTxtField.getText());
                 sprc.addRow(service);
-            } else if (part != null){
+                } 
+                else if (part != null){
                 part = new Part(nameTxtField.getText(), Float.parseFloat(priceTxtField.getText()), brandTxtField.getText(), descTxtField.getText(), String.format("%s%s" ,measureTxtField.getText(), measureUnitTxtField.getSelectedItem().toString()));
                 sprc.addRow(part);
+                this.dispose();
             }
+        }
         }catch (Exception ex){
                 JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-        this.dispose();
     }//GEN-LAST:event_confirmBtnActionPerformed
 
     /**
