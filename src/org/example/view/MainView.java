@@ -42,6 +42,10 @@ public class MainView extends javax.swing.JFrame {
         serviceOrderTable = new javax.swing.JTable();
         removeServiceOrderBtn = new javax.swing.JToggleButton();
         addServiceOrderBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        filterBtn = new javax.swing.JButton();
+        filterTxtField = new javax.swing.JTextField();
+        filterCBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OFICNA");
@@ -101,6 +105,22 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Pesquisar por:");
+
+        filterBtn.setBackground(new java.awt.Color(255, 255, 255));
+        filterBtn.setForeground(new java.awt.Color(0, 0, 0));
+        filterBtn.setText("Find");
+        filterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterBtnActionPerformed(evt);
+            }
+        });
+
+        filterCBox.setBackground(new java.awt.Color(255, 255, 255));
+        filterCBox.setForeground(new java.awt.Color(0, 0, 0));
+        filterCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Identificador", "Nome do Cliente", "Veiculo" }));
+
         javax.swing.GroupLayout serviceOrdersPanelLayout = new javax.swing.GroupLayout(serviceOrdersPanel);
         serviceOrdersPanel.setLayout(serviceOrdersPanelLayout);
         serviceOrdersPanelLayout.setHorizontalGroup(
@@ -111,15 +131,32 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serviceOrdersPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(addServiceOrderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(removeServiceOrderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(serviceOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serviceOrdersPanelLayout.createSequentialGroup()
+                                .addComponent(addServiceOrderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(removeServiceOrderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serviceOrdersPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(filterCBox, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(filterTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(filterBtn)
+                                .addGap(5, 5, 5)))))
                 .addContainerGap())
         );
         serviceOrdersPanelLayout.setVerticalGroup(
             serviceOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(serviceOrdersPanelLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(13, 13, 13)
+                .addGroup(serviceOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filterBtn)
+                    .addComponent(filterTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filterCBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(serviceOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -180,6 +217,52 @@ public class MainView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_serviceOrderTableMouseClicked
 
+    private void filterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterBtnActionPerformed
+        try{
+            if (filterCBox.getSelectedItem().toString().equals(" ")){
+                clearJTable();
+                for(ServiceOrder serviceOrder : serviceOrdersList){
+                    mvc.addRow(serviceOrder);
+                }
+            }
+            else if (filterCBox.getSelectedItem().toString().equals("Identificador")){
+                for (ServiceOrder serviceOrder : serviceOrdersList){
+                    if (serviceOrder.getId() == Integer.parseInt(filterTxtField.getText())){
+                        clearJTable();
+                        mvc.addRow(serviceOrder);
+                    }
+                }
+            }
+            else if (filterCBox.getSelectedItem().toString().equals("Nome do Cliente")){
+                for (ServiceOrder serviceOrder : serviceOrdersList){
+                    if (serviceOrder.getCostumer().getName().equals(filterTxtField.getText())){
+                        clearJTable();
+                        mvc.addRow(serviceOrder);
+                    }
+                }
+            }
+            else if (filterCBox.getSelectedItem().toString().equals("Veiculo")){
+                for (ServiceOrder serviceOrder : serviceOrdersList){
+                    if (serviceOrder.getVehicle().getModel().equals(filterTxtField.getText())){
+                        clearJTable();
+                        mvc.addRow(serviceOrder);
+                    }
+                }
+            }
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_filterBtnActionPerformed
+    
+    private void clearJTable(){
+        try{
+            DefaultTableModel table = (DefaultTableModel) serviceOrderTable.getModel();
+            table.setRowCount(0);
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+    
     // Adiciona objetos na lista de ordem de serviços.
     
     public void addToServiceOrderList(ServiceOrder serviceOrder){
@@ -229,6 +312,10 @@ public class MainView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addServiceOrderBtn;
+    private javax.swing.JButton filterBtn;
+    private javax.swing.JComboBox<String> filterCBox;
+    private javax.swing.JTextField filterTxtField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton removeServiceOrderBtn;
     private javax.swing.JTable serviceOrderTable;
