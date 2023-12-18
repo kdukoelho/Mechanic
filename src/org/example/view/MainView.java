@@ -111,7 +111,7 @@ public class MainView extends javax.swing.JFrame {
 
         filterBtn.setBackground(new java.awt.Color(255, 255, 255));
         filterBtn.setForeground(new java.awt.Color(0, 0, 0));
-        filterBtn.setText("Find");
+        filterBtn.setText("Achar");
         filterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filterBtnActionPerformed(evt);

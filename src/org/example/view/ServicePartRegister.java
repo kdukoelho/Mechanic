@@ -241,7 +241,7 @@ public class ServicePartRegister extends javax.swing.JFrame {
 
         confirmBtn.setBackground(new java.awt.Color(255, 255, 255));
         confirmBtn.setForeground(new java.awt.Color(0, 0, 0));
-        confirmBtn.setText("Confirm");
+        confirmBtn.setText("Confirmar");
         confirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmBtnActionPerformed(evt);

@@ -4,7 +4,6 @@
  */
 package org.example.view;
 
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.example.controller.OrderRegisterController;
@@ -99,7 +98,6 @@ public class OrderRegister extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("MyMechanic");
-        setIconImage(new ImageIcon("/assets/engrenagem.png"););
         setMaximumSize(new java.awt.Dimension(1186, 733));
         setMinimumSize(new java.awt.Dimension(1186, 733));
 
@@ -309,7 +307,8 @@ public class OrderRegister extends javax.swing.JFrame {
 
         confirmBtn.setBackground(new java.awt.Color(255, 255, 255));
         confirmBtn.setForeground(new java.awt.Color(0, 0, 0));
-        confirmBtn.setText("Confirm");
+        confirmBtn.setText("Confirmar");
+        confirmBtn.setActionCommand("");
         confirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmBtnActionPerformed(evt);
