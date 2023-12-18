@@ -30,7 +30,7 @@ Por exemplo, o método que realiza o calculo do valor final da ordem de serviço
   
 
 - Criar ordem de serviço:
-	<ol type=1">
+	<ol type="1">
 	<li>Clicar no botão "Adicionar Ordem de Serviço";</li>
 	<li>Preencher o formulário com as informações necessarias;</li>
 	<li>Clicar no botão "Adicionar Peça";</li>
