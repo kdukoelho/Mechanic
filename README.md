@@ -13,17 +13,19 @@ O software desenvolvido tem com objetivo realizar o gerenciamento de ordens de s
 
 ## Diagrama de Classes
 
-A seguir estão descritas as classes presentes em Model.
+A seguir estão descritas no diagrama, as classes presentes em Model, bem como seus respectivos métodos.
 
 <p align="center"> <img src="images/diagrama_de_classes.png"></p>
 
   
 
-## Organização do sistema
+## Arquitetura do Sistema
 
-O sistema não possui integração com nenhum banco de dados, portanto, toda informação nele inserida, será deletada quando o programa for finalizado.
-O sistema foi desenvolvido utilizando o padrão Model View Controller (MVC), onde: no model, estão presentes as classes bases para o funcionamento do sistema (descritas no diagrama de classes), no view, estão presentes as interfaces gráficas, e no controller as classes que fazem a integração entre o Model e o View.
-Por exemplo, o método que realiza o calculo do valor final da ordem de serviço está presente na classe "ServiceOrder" (Model), porém, ele é chamado na classe "MainViewController" (Controller) e o output é exibido na "MainView" (View).
+- Foi desenvolvido na linguagem java, utilizado o framework Swing para a na criação das interfaces gráficas.
+
+- O sistema não possui integração com nenhum banco de dados, portanto, toda informação nele inserida, será deletada quando o programa for finalizado.
+
+- O sistema foi desenvolvido utilizando o padrão Model View Controller (MVC), onde: no model, estão presentes as classes bases para o funcionamento do sistema (descritas no diagrama de classes), no view, estão presentes as interfaces gráficas, e no controller as classes que fazem a integração entre o Model e o View. Por exemplo, o método que realiza o calculo do valor final da ordem de serviço está presente na classe "ServiceOrder" (Model), porém, ele é chamado na classe "MainViewController" (Controller) e o output é exibido na "MainView" (View).
 
 ## Casos de uso
 
