@@ -1,5 +1,5 @@
 
-# Trabalho Orientação a Objetos
+# Sistema de Gerenciamento de Oficinas Mecanicas
 
 O software desenvolvido tem com objetivo realizar o gerenciamento de ordens de serviços de oficinas mecânicas. Ele conta com 4 (quatro) interfaces:
 
