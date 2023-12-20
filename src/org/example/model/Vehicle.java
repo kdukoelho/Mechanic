@@ -1,6 +1,6 @@
 package org.example.model;
 
-public class Vehicle {
+public abstract class Vehicle {
     private static int id_count = 0;
     private int id;
     private String brand;

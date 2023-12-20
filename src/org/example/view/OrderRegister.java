@@ -7,9 +7,12 @@ package org.example.view;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.example.controller.OrderRegisterController;
+import org.example.model.Bike;
+import org.example.model.Car;
 import org.example.model.Part;
 import org.example.model.Service;
 import org.example.model.ServiceOrder;
+import org.example.model.Vehicle;
 
 /**
  *
@@ -472,11 +475,15 @@ public class OrderRegister extends javax.swing.JFrame {
                 if(fuelLevel > 100){ fuelLevel = 100; }
                 else if (fuelLevel < 0) { fuelLevel = 0; }
                 
+                // Cria a ordem de seviço.
+                
                 ServiceOrder serviceOrder = orc.createServiceOrder(orc.createCostumer(clientNameTxtField.getText(), costumerContactTxtField.getText(), emailRBtn.isSelected()), 
                 orc.createMechanic(mechanicTxtField.getText()), 
-                orc.createVehicle(vehicleModelTxtField.getText(), brandTxtField.getText(), vehicleYearFmtdTxtField.getText(), modelYearFmtdTxtField.getText(), Float.parseFloat(kilometersDroveTxtField.getText()), fuelLevel, isCarRBtn.isSelected()), 
+                isCarRBtn.isSelected() ? new Car(vehicleModelTxtField.getText(), brandTxtField.getText(), vehicleYearFmtdTxtField.getText(), modelYearFmtdTxtField.getText(), Float.parseFloat(kilometersDroveTxtField.getText()), fuelLevel) : new Bike(vehicleModelTxtField.getText(), brandTxtField.getText(), vehicleYearFmtdTxtField.getText(), modelYearFmtdTxtField.getText(), Float.parseFloat(kilometersDroveTxtField.getText()), fuelLevel), 
                 orc.getServicesFromTable(servicesTable), orc.getPartsFromTable(partsTable));
-
+                
+                System.out.println(serviceOrder.getVehicle());
+                
                 // Adiciona linha na tabela.
                 orc.addRow(serviceOrder);
                 // Adiciona o objeto na lista.

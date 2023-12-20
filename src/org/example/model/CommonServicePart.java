@@ -1,6 +1,6 @@
 package org.example.model;
 
-public class CommonServicePart {
+public abstract class CommonServicePart {
     protected int id;
     private String name;
     private String description;
@@ -53,6 +53,4 @@ public class CommonServicePart {
     public String toString() {
         return "CommonServicePart{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + '}';
     }
-    
-    
 }

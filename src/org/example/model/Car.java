@@ -4,4 +4,9 @@ public class Car extends Vehicle{
     public Car(String brand, String model, String fabricationDate, String modelYear, float kilometersDrove, int fuelLevelInPercents){
         super(brand, model, fabricationDate, modelYear, kilometersDrove, fuelLevelInPercents);
     }
+
+    @Override
+    public String toString() {
+        return "Car{" + '}';
+    }
 }
